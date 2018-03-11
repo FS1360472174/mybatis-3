@@ -1,0 +1,36 @@
+@startuml
+
+abstract class AbstractList
+abstract AbstractCollection
+interface List
+interface Collection
+
+List <|-- AbstractList
+Collection <|-- AbstractCollection
+
+Collection <|- List
+AbstractCollection <|- AbstractList
+AbstractList <|-- ArrayList
+
+class ArrayList {
+Object[] elementData
+size()
+}
+
+interface SqlSession {
+void select(String statement, Object parameter, ResultHandler handler);
+int insert(String statement, Object parameter);
+Connection getConnection();
+}
+
+interface SqlSessionFactory {
+SqlSession openSession(Connection connection);
+}
+
+enum TimeUnit {
+DAYS
+HOURS
+MINUTES
+}
+
+@enduml
