@@ -5,12 +5,7 @@ abstract AbstractCollection
 interface List
 interface Collection
 
-List <|-- AbstractList
-Collection <|-- AbstractCollection
-
-Collection <|- List
-AbstractCollection <|- AbstractList
-AbstractList <|-- ArrayList
+SqlSession <|-- SqlSessionFactory
 
 class ArrayList {
 Object[] elementData
@@ -18,9 +13,14 @@ size()
 }
 
 interface SqlSession {
+Configuration getConfiguration();
+<T> T getMapper(Class<T> type);
+Connection getConnection();
+void commit(boolean force);
+void rollback();
 void select(String statement, Object parameter, ResultHandler handler);
 int insert(String statement, Object parameter);
-Connection getConnection();
+
 }
 
 interface SqlSessionFactory {
